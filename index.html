@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres ser mi Valentín?</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', sans-serif;
+      text-align: center;
+      color: #000000;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .collage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    .collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-size: 5.0rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      color: white;
+      background-color: #000000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #bb2063;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgb(255, 0, 0);
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+      );
+      animation: float 5s ease-in infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="collage">
+    <img src="https://i.pinimg.com/236x/0e/8e/0f/0e8e0fc0d9d1819464d825bcc128f0f5.jpg" alt="Foto 1">
+    <img src="https://i.pinimg.com/originals/27/77/6c/27776cc292cedb3e2435e3a6b7672cb0.jpg" alt="Foto 2">
+    <img src="https://i.pinimg.com/236x/74/45/82/744582341c579a459b4bd319e7bc1915.jpg" alt="Foto 3">
+    <img src="https://pbs.twimg.com/media/FEzyD94XEA0Td3e.jpg:large" alt="Foto 4">
+    <img src="https://i.redd.it/p5kpjidiqox61.jpg" alt="Foto 5">
+    <img src="https://i.pinimg.com/550x/31/10/cb/3110cb340dd477cee68e2328e3cbb777.jpg" alt="Foto 6">
+    <img src="https://media.tenor.com/tK1vi8ZlbAwAAAAe/twice-meme.png" alt="Foto 7">
+    <img src="https://i.ytimg.com/vi/CC0vkt-daN4/maxresdefault.jpg" alt="Foto 8">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmBz5iEIEJ2zCW7618a1VYsUkAhsonWIfIbA&s" alt="Foto 9">
+    <!-- Agrega más imágenes si quieres -->
+  </div>
+
+  <h1>¡Hola mi amor!</h1>
+  <p>Estuve pensando y queria decirte si deseas ser mi valentin este año y el resto de años de nuestra vida</p>
+  <button onclick="responder('Sí')">¡Sí!, no tienes otra opcion owo</button>
+  <p id="message"></p>
+
+  <audio id="miCancion" controls autoplay loop>
+    <source src="enamorado_tuyo@nicooponcee.mp3" type="audio/mpeg">
+    Tu navegador no soporta la etiqueta de audio.
+  </audio>
+
+  <div id="hearts-container"></div>
+
+  <script>
+    function responder(respuesta) {
+      const message = document.getElementById('message');
+      if (respuesta === 'Sí') {
+        message.textContent = 'LETSSS GOUUUU, ahora envia foto cara para la confirmacion';
+        createHearts();
+        
+        const cancion = document.getElementById('miCancion');
+        cancion.play();
+      }
+    }
+
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts-container');
+      for (let i = 0; i < 50; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        heartsContainer.appendChild(heart);
+      }
+    }
+
+    // Crear corazones al cargar la página
+  </script>
+</body>
+</html>
